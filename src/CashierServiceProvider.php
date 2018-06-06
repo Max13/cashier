@@ -13,6 +13,12 @@ class CashierServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Cashier\Cashier::useCurrency(
+            config('app.currency.code', 'USD'),
+            config('app.currency.symbol', '$'),
+            config('app.currency.format')
+        );
+
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'cashier');
 
         $this->publishes([
