@@ -44,11 +44,13 @@ class Cashier
      * @param  string|null  $symbol
      * @return void
      */
-    public static function useCurrency($currency, $symbol = null)
+    public static function useCurrency($currency, $symbol = null, callable $format = null)
     {
         static::$currency = $currency;
 
         static::useCurrencySymbol($symbol ?: static::guessCurrencySymbol($currency));
+
+        static::$formatCurrencyUsing = $format;
     }
 
     /**
